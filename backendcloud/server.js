@@ -79,6 +79,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);
 });
-// In your server.js file, make sure you have:
-const symptomsRoutes = require('./routesss/symptoms');
-app.use('/api/symptoms', symptomsRoutes);

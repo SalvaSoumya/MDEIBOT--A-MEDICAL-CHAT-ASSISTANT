@@ -1,0 +1,11 @@
+{
+  "name": "medibot",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd backendcloud && node server.js",
+    "build": "cd backendcloud && npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

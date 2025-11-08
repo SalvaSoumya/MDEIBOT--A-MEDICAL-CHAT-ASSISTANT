@@ -7,31 +7,62 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #2575fc, #6a11cb);
-      color: #fff;
+    :root {
+      --primary: #2575fc;
+      --secondary: #6a11cb;
+      --success: #2ecc71;
+      --warning: #f39c12;
+      --danger: #e74c3c;
+      --dark: #2c3e50;
+      --light: #ecf0f1;
+    }
+    
+    body { 
+      font-family: 'Roboto', sans-serif; 
+      background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+      color:#fff;
+      margin:0; 
       min-height: 100vh;
     }
-    .navbar { background: rgba(255,255,255,0.9) !important; }
-    .navbar-brand { font-family: 'Montserrat', sans-serif; font-weight: 800; color: #2575fc !important; }
-    .nav-link { font-weight: 500; color: #555 !important; }
-    .nav-link:hover { color: #2575fc !important; }
-    .hero-section {
-      padding: 100px 0;
-      text-align: center;
+    
+    .navbar { 
+      background-color: #ffffffcc; 
+      backdrop-filter: blur(8px); 
     }
-    .hero-title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 3.5rem;
+    
+    .navbar-brand { 
+      font-family: 'Montserrat', sans-serif; 
+      font-weight:800; 
+      color:var(--primary) !important;
+    }
+    
+    .nav-link { 
+      font-weight:500; 
+      color:#555 !important;
+    }
+    
+    .nav-link:hover, .nav-link.active { 
+      color:var(--primary) !important;
+    }
+    
+    .hero-section { 
+      text-align:center; 
+      padding:100px 20px 40px;
+    }
+    
+    .hero-title { 
+      font-family:'Montserrat', sans-serif; 
+      font-weight:800; 
+      font-size:3.5rem;
       margin-bottom: 20px;
     }
+    
     .hero-subtitle {
       font-size: 1.3rem;
       margin-bottom: 40px;
       opacity: 0.9;
     }
+    
     .btn-primary {
       border-radius: 50px;
       font-weight: 600;
@@ -40,7 +71,12 @@
       border: none;
       transition: all 0.3s ease;
     }
-    .btn-primary:hover { background: #1a5ed8; transform: translateY(-2px); }
+    
+    .btn-primary:hover { 
+      background: #1a5ed8; 
+      transform: translateY(-2px); 
+    }
+    
     .feature-card {
       background: rgba(255,255,255,0.1);
       border-radius: 20px;
@@ -49,6 +85,7 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.2);
     }
+    
     .team-section {
       background: rgba(255,255,255,0.1);
       border-radius: 20px;
@@ -56,6 +93,7 @@
       margin: 50px 0;
       backdrop-filter: blur(10px);
     }
+    
     .team-title {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
@@ -63,100 +101,114 @@
       margin-bottom: 30px;
       text-align: center;
     }
+    
     .team-member {
       text-align: center;
       padding: 20px;
     }
+    
     .team-name {
       font-weight: 600;
       font-size: 1.2rem;
       margin-bottom: 5px;
     }
+    
     .team-id {
       opacity: 0.8;
       font-size: 0.9rem;
     }
+    
+    footer { 
+      background:#1a1a1a; 
+      color:#fff; 
+      padding:30px; 
+      text-align:center;
+      margin-top: 50px;
+    }
   </style>
 </head>
 <body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MediBot</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="health.html">Health</a></li>
+          <li class="nav-item"><a class="nav-link" href="chat.html">Chat</a></li>
+          <li class="nav-item"><a class="nav-link" href="symptoms.html">Symptoms</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg shadow-sm">
+  <!-- Hero Section -->
   <div class="container">
-    <a class="navbar-brand" href="index.html">MediBot</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="chat.html">Chat</a></li>
-        <li class="nav-item"><a class="nav-link" href="symptoms.html">Symptoms</a></li>
-        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-        <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
-      </ul>
+    <div class="hero-section">
+      <h1 class="hero-title">Welcome to MediBot</h1>
+      <p class="hero-subtitle">Your AI-powered medical assistant for instant health guidance and symptom analysis</p>
+      <a href="chat.html" class="btn btn-primary btn-lg">Start Chatting</a>
     </div>
-  </div>
-</nav>
 
-<!-- Hero Section -->
-<div class="container">
-  <div class="hero-section">
-    <h1 class="hero-title">Welcome to MediBot</h1>
-    <p class="hero-subtitle">Your AI-powered medical assistant for instant health guidance and symptom analysis</p>
-    <a href="chat.html" class="btn btn-primary btn-lg">Start Chatting</a>
-  </div>
-
-  <!-- Features Section -->
-  <div class="row">
-    <div class="col-md-4">
-      <div class="feature-card">
-        <h4>💬 Smart Chat</h4>
-        <p>Get instant answers to your medical questions from our AI assistant</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="feature-card">
-        <h4>🔍 Symptom Checker</h4>
-        <p>Analyze your symptoms and get preliminary health insights</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="feature-card">
-        <h4>📱 24/7 Access</h4>
-        <p>Access medical guidance anytime, anywhere from your device</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Team Section -->
-  <div class="team-section">
-    <h3 class="team-title">Project Developed By</h3>
+    <!-- Features Section -->
     <div class="row">
       <div class="col-md-4">
-        <div class="team-member">
-          <div class="team-name">SALVA SOUMYA</div>
-          <div class="team-id">23MID0061</div>
+        <div class="feature-card">
+          <h4>💬 Smart Chat</h4>
+          <p>Get instant answers to your medical questions from our AI assistant</p>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="team-member">
-          <div class="team-name">NEETHI SHREE</div>
-          <div class="team-id">23MID0178</div>
+        <div class="feature-card">
+          <h4>🔍 Symptom Checker</h4>
+          <p>Analyze your symptoms and get preliminary health insights</p>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="team-member">
-          <div class="team-name">HARINI T</div>
-          <div class="team-id">23MID0345</div>
+        <div class="feature-card">
+          <h4>📱 24/7 Access</h4>
+          <p>Access medical guidance anytime, anywhere from your device</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="team-section">
+      <h3 class="team-title">Project Developed By</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="team-member">
+            <div class="team-name">SALVA SOUMYA</div>
+            <div class="team-id">23MID0061</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="team-member">
+            <div class="team-name">NEETHI SHREE</div>
+            <div class="team-id">23MID0178</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="team-member">
+            <div class="team-name">HARINI T</div>
+            <div class="team-id">23MID0345</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Footer -->
-<footer class="text-center py-4 mt-5">
-  <p>&copy; 2025 MediBot. All rights reserved.</p>
-</footer>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 MediBot. All rights reserved.</p>
+  </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

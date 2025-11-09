@@ -6,24 +6,150 @@
   <title>Notifications - MediBot</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body { font-family: 'Roboto', sans-serif; background: linear-gradient(135deg, #2575fc, #6a11cb); margin:0; color:#fff;}
-    .navbar { background-color: #ffffffcc; backdrop-filter: blur(8px); }
-    .navbar-brand { font-family: 'Montserrat', sans-serif; font-weight:800; color:#2575fc !important;}
-    .nav-link { font-weight:500; color:#555 !important;}
-    .nav-link:hover { color:#2575fc !important;}
-    .page-header { text-align:center; padding:80px 20px;}
-    .page-header h1 { font-family:'Montserrat', sans-serif; font-weight:800; font-size:3rem;}
-    .list-group-item { border:none; margin-bottom:10px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.2);}
-    footer { background:#1a1a1a; color:#fff; padding:30px; text-align:center;}
-    footer a { color:#2575fc; text-decoration:none;}
+    :root {
+      --primary: #2575fc;
+      --secondary: #6a11cb;
+    }
+    
+    body { 
+      font-family: 'Roboto', sans-serif; 
+      background: #f8f9fa; 
+      margin: 0; 
+      color: #333;
+      min-height: 100vh;
+    }
+    
+    .navbar { 
+      background-color: #ffffff; 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-brand { 
+      font-family: 'Montserrat', sans-serif; 
+      font-weight: 800; 
+      color: var(--primary) !important;
+    }
+    
+    .nav-link { 
+      font-weight: 500; 
+      color: #555 !important;
+    }
+    
+    .nav-link:hover, .nav-link.active { 
+      color: var(--primary) !important;
+    }
+    
+    .page-header { 
+      text-align: center; 
+      padding: 80px 20px 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      margin-bottom: 30px;
+    }
+    
+    .page-header h1 { 
+      font-family: 'Montserrat', sans-serif; 
+      font-weight: 800; 
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .notification-card {
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      background: #fff;
+      border-left: 4px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .notification-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    
+    .notification-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-right: 15px;
+      background: rgba(37, 117, 252, 0.1);
+      color: var(--primary);
+    }
+    
+    .notification-time {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 5px;
+    }
+    
+    .notification-badge {
+      background: #e74c3c;
+      color: white;
+      border-radius: 20px;
+      padding: 2px 8px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+    
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #2c3e50;
+      margin: 30px 0 20px;
+      font-size: 1.3rem;
+    }
+    
+    footer { 
+      background: #1a1a1a; 
+      color: #fff; 
+      padding: 30px; 
+      text-align: center;
+      margin-top: 50px;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 50px 20px;
+      color: #666;
+    }
+    
+    .empty-state i {
+      font-size: 4rem;
+      color: #ddd;
+      margin-bottom: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .page-header {
+        padding: 70px 15px 30px;
+      }
+      
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      
+      .notification-card {
+        padding: 15px;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">MediBot</a>
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-heartbeat me-2"></i>MediBot
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -42,16 +168,113 @@
   <!-- Page Header -->
   <div class="page-header">
     <h1>Notifications</h1>
-    <p>Stay updated with reminders and health alerts.</p>
+    <p>Latest updates and announcements from MediBot</p>
   </div>
 
-  <!-- Notifications List -->
+  <!-- Content -->
   <div class="container mb-5">
-    <ul class="list-group">
-      <li class="list-group-item">💊 Reminder: Take your morning medication at 9:00 AM</li>
-      <li class="list-group-item">🩺 Appointment: Dr. Brown - Sep 10, 2025</li>
-      <li class="list-group-item">📄 Lab Results available for your recent blood test</li>
-    </ul>
+    <!-- System Notifications -->
+    <h3 class="section-title">System Updates <span class="notification-badge">3</span></h3>
+    <div class="notification-card">
+      <div class="d-flex align-items-start">
+        <div class="notification-icon">
+          <i class="fas fa-sync-alt"></i>
+        </div>
+        <div class="flex-grow-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <h6 class="mb-1">System Maintenance</h6>
+            <small class="notification-time">Today, 10:30 AM</small>
+          </div>
+          <p class="mb-1">Scheduled maintenance completed. All services are running smoothly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="notification-card">
+      <div class="d-flex align-items-start">
+        <div class="notification-icon">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <div class="flex-grow-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <h6 class="mb-1">New Feature Added</h6>
+            <small class="notification-time">Yesterday, 2:15 PM</small>
+          </div>
+          <p class="mb-1">Symptom checker now includes more conditions and improved accuracy.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Health Tips -->
+    <h3 class="section-title">Health Tips</h3>
+    <div class="notification-card">
+      <div class="d-flex align-items-start">
+        <div class="notification-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <div class="flex-grow-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <h6 class="mb-1">Daily Health Tip</h6>
+            <small class="notification-time">Today, 8:00 AM</small>
+          </div>
+          <p class="mb-1">Stay hydrated! Drink at least 8 glasses of water daily for optimal health.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="notification-card">
+      <div class="d-flex align-items-start">
+        <div class="notification-icon">
+          <i class="fas fa-walking"></i>
+        </div>
+        <div class="flex-grow-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <h6 class="mb-1">Exercise Reminder</h6>
+            <small class="notification-time">2 days ago</small>
+          </div>
+          <p class="mb-1">Regular exercise boosts immunity and improves mental health. Aim for 30 minutes daily.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- General Announcements -->
+    <h3 class="section-title">Announcements</h3>
+    <div class="notification-card">
+      <div class="d-flex align-items-start">
+        <div class="notification-icon">
+          <i class="fas fa-bullhorn"></i>
+        </div>
+        <div class="flex-grow-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <h6 class="mb-1">Welcome to MediBot!</h6>
+            <small class="notification-time">1 week ago</small>
+          </div>
+          <p class="mb-1">Thank you for choosing MediBot. We're here to help you with your health journey.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="notification-card">
+      <div class="d-flex align-items-start">
+        <div class="notification-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="flex-grow-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <h6 class="mb-1">Privacy Update</h6>
+            <small class="notification-time">2 weeks ago</small>
+          </div>
+          <p class="mb-1">We've updated our privacy policy to better protect your health information.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State (Hidden) -->
+    <div id="emptyState" class="empty-state" style="display: none;">
+      <i class="fas fa-bell-slash"></i>
+      <h4>No Notifications</h4>
+      <p>You're all caught up! Check back later for new updates.</p>
+    </div>
   </div>
 
   <!-- Footer -->
